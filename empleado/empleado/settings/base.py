@@ -21,6 +21,8 @@ INSTALLED_APPS = [
     'applications.departamento',
     'applications.empleados',
     'applications.home',
+    # Remote Apps
+    'ckeditor'
     
     
 ]

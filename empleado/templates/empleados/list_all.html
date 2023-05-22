@@ -1,0 +1,13 @@
+<h1>Listado de todos los empleados de la empresa.</h1>
+
+<ul>
+    {% for empleados in list  %}
+        <li>    
+            {{empleados.first_name}}
+            {{empleados.last_name}}
+        </li>
+    {% endfor %}
+
+</ul>
+
+
