@@ -1,0 +1,20 @@
+<h3>Habilidades de cada empelado</h3>
+
+<form action="" method="get">{% csrf_token %}
+
+    <input type="text" id = 'kword' name="kword" placeholder="Ingrese la id  ">
+    <button type="submit">Buscar</button>
+
+
+</form>
+<ul>    
+    
+    {% for a in abilty %}
+        <li>
+            {{a}}
+        </li>
+    {% endfor %}
+        
+</ul>
+
+

@@ -43,7 +43,7 @@ class EmpleadoModel(models.Model):
     depart = models.ForeignKey( DepartamentoModel, on_delete=models.CASCADE)
     # image = models.ImageField(, upload_to=None, height_field=None, width_field=None, max_length=None)
     ability = models.ManyToManyField(HabilidadesModel)
-    cv = RichTextField()
+    cv = RichTextField(blank=True)
     
     class Meta:
         """Meta definition for EmpleadoModel."""

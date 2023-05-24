@@ -1,0 +1,19 @@
+<h1>Job List</h1>
+
+
+<form action="" method="get">{% csrf_token %}
+
+    <input type="text" id = 'kword' name="kword" placeholder="Ingrese nombre">
+    <button type="submit">Buscar</button>
+
+
+</form>
+
+<h3>Lista Resultados</h3>
+
+{% for j in jobs  %}
+
+    {{j}}
+    
+{% endfor %}
+    
