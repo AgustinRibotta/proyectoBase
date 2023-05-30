@@ -12,6 +12,7 @@ class EmpleadoAdmin(admin.ModelAdmin):
     
     # Que fila de la tabla queremos que aparesca
     list_display = (
+        'id',
         'first_name',
         'last_name',
         'depart',

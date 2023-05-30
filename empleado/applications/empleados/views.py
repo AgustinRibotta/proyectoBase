@@ -7,12 +7,18 @@ from django.views.generic import (
     DetailView,
     TemplateView,
     CreateView,
+    UpdateView,
+    DeleteView,
 )
 
 # Models
 from .models import EmpleadoModel
 from .admin import EmpleadoAdmin
 # Create your views here.
+
+
+## LISTAR ELEMENTOS ###
+
 
 # Lista de empeads
 class ListAllListView(ListView):
@@ -76,6 +82,10 @@ class abiltyByEmpleadoListView(ListView):
             return empleado
         
 
+
+### DETALLES DE LOS ELEMENTOS ###
+
+
 class EmpleadoDetailView(DetailView):
     model = EmpleadoModel
     template_name = "empleados/detai_view.html"
@@ -89,6 +99,10 @@ class EmpleadoDetailView(DetailView):
 
 class SuccessTemplateView(TemplateView):
     template_name = "empleados/success.html"
+
+
+
+### CREACION DE ELEMENTOIS ###
 
 
 class EmpleadoCreateView(CreateView):
@@ -118,6 +132,45 @@ class EmpleadoCreateView(CreateView):
 
 
 
+### ACTUALIZACION DE ELEMNTOS ###
 
+
+class EmpleadoUpdateView(UpdateView):
+    model = EmpleadoModel
+    template_name = "empleados/update.html"
+    fields = [
+        'first_name',
+        'last_name',
+        'job',
+        'depart',
+        'ability',
+    ]       
+    success_url = reverse_lazy ('empleados_app:success')      
+           
+    # Primero se ejecuta esto
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        # Intervenimos la solicitu y tomamos el dato que nececitamos y los modificamos o altearmas antes de realziar la validacion
+        print(request.POST)
+        print(request.POST['last_name'])
+        return super().post(request, *args, **kwargs)
+                          
+    #  Luego se realiza la validacion                      
+    def form_valid(self, form: BaseModelForm):
+        empleado = form.save(commit=False)
+        empleado.full_name = empleado.first_name + ' ' + empleado.last_name
+        empleado.save()
+        return super(EmpleadoCreateView, self).form_valid(form)
+
+
+             
+### ELMIMINACION DE ELEMENTOS ###
+
+
+
+class EmpleadoDeleteView(DeleteView):
+    model = EmpleadoModel
+    template_name = "empleados/delete.html"
+    success_url = reverse_lazy ('empleados_app:success')
 
 
