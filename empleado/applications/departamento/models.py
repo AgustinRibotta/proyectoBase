@@ -4,9 +4,19 @@ from django.db import models
 
 class DepartamentoModel(models.Model):
 
-    name = models.CharField('Nombre', max_length=50)
-    short_name = models.CharField('Nombre Corto', max_length=50, unique=True)
-    anulate = models.BooleanField('Anulado', default = False)
+    name = models.CharField(
+        'Nombre', 
+        max_length=50
+    )
+    short_name = models.CharField(
+        'Nombre Corto', 
+        max_length=50, 
+        unique=True
+    )
+    anulate = models.BooleanField(
+        'Anulado', 
+        default = False
+    )
     
     # De esta manera le modificamos el nombre a la trabla
     

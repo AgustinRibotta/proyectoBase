@@ -1,8 +1,14 @@
+from django.forms.models import BaseModelForm
+from django.http import HttpResponse
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.views.generic import (
     ListView,
     DetailView,
+    TemplateView,
+    CreateView,
 )
+
 # Models
 from .models import EmpleadoModel
 from .admin import EmpleadoAdmin
@@ -80,3 +86,38 @@ class EmpleadoDetailView(DetailView):
         context['titulo'] = 'Empleado del mes' 
         return context
     
+
+class SuccessTemplateView(TemplateView):
+    template_name = "empleados/success.html"
+
+
+class EmpleadoCreateView(CreateView):
+    model = EmpleadoModel
+    template_name = "empleados/add.html"
+    # fields = ('__all__')
+    fields = [
+        'first_name',
+        'last_name',
+        'job',
+        'depart',
+        'ability',
+    ]
+    # success_url = '/success/'
+    success_url = reverse_lazy ('empleados_app:success')
+
+    def form_valid(self, form: BaseModelForm):
+        # Logica del proceso
+        # empleado = form.save()
+        # De esta manera creamos una instacias antes de guardar, para evitar guardad dos veces
+        empleado = form.save(commit=False)
+        # De esta manera verificamos que interceptamos todo lo que se gurado en la base de datos
+        # print (empleado)
+        empleado.full_name = empleado.first_name + ' ' + empleado.last_name
+        empleado.save()
+        return super(EmpleadoCreateView, self).form_valid(form)
+
+
+
+
+
+

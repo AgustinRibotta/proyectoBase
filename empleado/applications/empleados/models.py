@@ -9,7 +9,10 @@ class HabilidadesModel(models.Model):
 
     # TODO: Define fields here
     
-    ability = models.CharField('Habilidades', max_length=50)
+    ability = models.CharField(
+        'Habilidades', 
+        max_length=50
+    )
 
     class Meta:
         """Meta definition for Habilidades."""
@@ -37,13 +40,42 @@ class EmpleadoModel(models.Model):
     
     # TODO: Define fields here
     
-    first_name = models.CharField('Nombres', max_length=50)
-    last_name = models.CharField('Apellido', max_length=50)
-    job = models.CharField('Trabajo', max_length=1, choices=JOB_CHOICES)
-    depart = models.ForeignKey( DepartamentoModel, on_delete=models.CASCADE)
-    # image = models.ImageField(, upload_to=None, height_field=None, width_field=None, max_length=None)
-    ability = models.ManyToManyField(HabilidadesModel)
-    cv = RichTextField(blank=True)
+    first_name = models.CharField(
+        'Nombres', 
+        max_length=50
+    )
+    last_name = models.CharField(
+        'Apellido', 
+        max_length=50
+    )
+    full_name = models.CharField(
+        'Nombre Completo', 
+        max_length=120,
+        blank=True
+    )
+    job = models.CharField(
+        'Trabajo', 
+        max_length=1, 
+        choices=JOB_CHOICES
+    )
+    depart = models.ForeignKey(
+        DepartamentoModel, 
+        on_delete=models.CASCADE
+    )
+    # image = models.ImageField(
+        # , 
+        # upload_to=None, 
+        # height_field=None, 
+        # width_field=None, 
+        # max_length=None
+    # )
+    
+    ability = models.ManyToManyField(
+        HabilidadesModel
+    )
+    cv = RichTextField(
+        blank=True
+    )
     
     class Meta:
         """Meta definition for EmpleadoModel."""
