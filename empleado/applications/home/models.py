@@ -7,3 +7,4 @@ class PruebaModels(models.Model):
 
     titulo = models.CharField(max_length=30)
     sub_titulo = models.CharField(max_length=20)
+    cantidad = models.IntegerField()

@@ -1,0 +1,20 @@
+<h1> Estamos en nuevo departamento</h1>
+
+<form action="" method="post">{% csrf_token %}
+    <h3> Datos emnpleado</h3>
+    <p>
+        {{form.name}}
+    </p>
+    <p> 
+        {{form.first_name}}
+    </p>
+    <h3> Datos Departamento</h3>
+    <p>
+        {{form.departamento}}
+        
+    </p>
+    <p>
+        {{form.shor_name}}
+    </p>
+    <button type="submit">Guardar</button>
+</form>
