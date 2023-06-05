@@ -13,7 +13,11 @@ from applications.home.models import PruebaModels
 
 class indexView(TemplateView):
     template_name = "home/home.html"
-    
+
+
+class ResumenFundationView(TemplateView):
+    template_name = "home/fundation.html"
+
 
 class PruebaListVi1ew(ListView):
     

@@ -26,3 +26,12 @@
 <h4>Ubicar carpeta template y carpeta de aplicacion</h4>
 <img src="media/configviews.png" alt="">
 
+<h4>Creacion de la carpeta static</h4>
+<p>La misma debe ser creada a la altura del manage,py.</p>
+<img src="media/static.png" alt="">
+
+<h4>Indicamos la direccion de la carpeta en los setting</h4>
+<img src="media/ubistatic.png" alt="">
+
+<h4>Cargamos los static al html</h4>
+<img src="media/cargamos html.png" alt="">

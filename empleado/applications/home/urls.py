@@ -22,4 +22,9 @@ urlpatterns = [
         views.PruebaCreateView.as_view(),
         name='add',
     ),
+    path(
+        'template/', 
+        views.ResumenFundationView.as_view(),
+        name='Fundation',
+    ),
 ]
